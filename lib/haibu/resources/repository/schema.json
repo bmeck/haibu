@@ -34,6 +34,11 @@
                     "required": true
                 }
             }
+        },
+        "env": {
+            "additionalProperties": {
+                "type": "string"
+            }
         }
     }
 }
