@@ -1,0 +1,39 @@
+{
+    "name": "Repository",
+    "properties": {
+        "application": {
+            "type": "object",
+            "required": true,
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "required": "true"
+                },
+                "user": {
+                    "type": "string",
+                    "required": "true"
+                }
+            }
+        },
+        "repository": {
+            "type": "object",
+            "required": true,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        },
+        "scripts": {
+            "type": "object",
+            "required": true,
+            "properties": {
+                "start": {
+                    "type": "string",
+                    "required": true
+                }
+            }
+        }
+    }
+}

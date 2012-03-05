@@ -1,0 +1,22 @@
+{
+    "name": "Drone",
+    "properties": {
+        "monitor": {
+            "type": "object",
+            "required": true,
+            "default": null
+        },
+        "environment": {
+            "type": "string",
+            "required": true
+        },
+        "config": {
+            "type": "object",
+            "required": true
+        },
+        "repository": {
+            "type": "object",
+            "required": true
+        }
+    }
+}

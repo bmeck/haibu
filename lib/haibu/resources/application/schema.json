@@ -1,0 +1,13 @@
+{
+    "name": "Application",
+    "properties": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "user": {
+            "type": "string",
+            "required": true
+        }
+    }
+}

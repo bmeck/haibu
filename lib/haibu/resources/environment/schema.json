@@ -1,0 +1,9 @@
+{
+    "name": "Environment",
+    "properties": {
+        "name": {
+            "type": "string",
+            "required": "true"
+        }
+    }
+}
