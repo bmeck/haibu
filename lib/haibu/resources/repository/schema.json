@@ -1,6 +1,10 @@
 {
     "name": "Repository",
     "properties": {
+        "name": {
+            "type": "string",
+            "required": true
+        },
         "application": {
             "type": "object",
             "required": true,
@@ -14,6 +18,14 @@
                     "required": "true"
                 }
             }
+        },
+        "env": {
+            "additionalProperties": {
+                "type": "string"
+            }
+        },
+        "mtime": {
+            "type": "number"
         },
         "repository": {
             "type": "object",
@@ -33,11 +45,6 @@
                     "type": "string",
                     "required": true
                 }
-            }
-        },
-        "env": {
-            "additionalProperties": {
-                "type": "string"
             }
         }
     }
