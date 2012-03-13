@@ -37,6 +37,14 @@
                 }
             }
         },
+        "local": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string"
+                }
+            }
+        },
         "scripts": {
             "type": "object",
             "required": true,

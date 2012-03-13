@@ -2,6 +2,7 @@
 
 var path = require('path'),
     util = require('util'),
+    flatiron = require('flatiron'),
     argv = require('optimist').argv,
     haibu = require('../lib/haibu');
 
@@ -22,38 +23,42 @@ var help = [
 ].join('\n');
 
 if (argv.h || argv.help) {
-  return util.puts(help);
+  util.puts(help);
 }
-
-var env  = argv.env || 'development',
-    port = argv.p   || 9002;
-
-if (argv.chroot) {
-  haibu.use(haibu.chroot, {});
-}
-
-if (argv.coffee) {
-  haibu.use(haibu.coffee, {});
-}
-
-if (argv['advanced-replies']) {
-  haibu.use(haibu['advanced-replies'], {});
-}
-
-haibu.utils.bin.getAddress(argv.a, function (err, address) {
-  if (err) {
-    console.log('Error getting IP Address: ' + err.message);
+else {
+  var env  = argv.env || 'development',
+      port = argv.p   || 9002;
+  
+  if (argv.chroot) {
+    haibu.use(haibu.plugins.chroot, {});
   }
   
-  var options = {
-    env: env,
-    port: port,
-    host: address
-  };
+  if (argv.coffee) {
+    haibu.use(haibu.plugins.coffee, {});
+  }
   
-  haibu.config.file({ file: path.join(__dirname, '..', 'config', 'config.json') });
+  if (argv['advanced-replies']) {
+    haibu.use(haibu.plugins['advanced-replies'], {});
+  }
+  
+  haibu.use(flatiron.plugins.http);
+  haibu.createRoutes(haibu.router);
+  haibu.common.getIpAddresses(argv.a, function (err, addresses) {
+    if (err) {
+      haibu.emit('error', err);
+    }
     
-  haibu.drone.start(options, function () {
-    haibu.utils.showWelcome('api-server', address, port);
+    var address = addresses[0];
+    var options = {
+      env: env,
+      port: port,
+      host: address
+    };
+    
+    haibu.config.file({ file: path.join(__dirname, '..', 'config', 'config.json') });
+    
+    haibu.start(options, function () {
+      haibu.utils.showWelcome('api-server', address, port);
+    });
   });
-});
+}

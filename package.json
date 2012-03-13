@@ -7,7 +7,11 @@
     "type": "git",
     "url": "http://github.com/nodejitsu/haibu.git"
   },
-  "keywords": ["cloud computing", "automated deployment", "platform-as-a-service"],
+  "keywords": [
+    "cloud computing",
+    "automated deployment",
+    "platform-as-a-service"
+  ],
   "dependencies": {
     "cloudfiles": "0.3.x",
     "cliff": "0.1.x",
@@ -21,7 +25,8 @@
     "pkginfo": "0.2.x",
     "request": "2.x.x",
     "semver": "1.0.x",
-    "union": "0.x.x"
+    "union": "0.x.x",
+    "tar": "~0.1.12"
   },
   "devDependencies": {
     "vows": "0.6.x"
@@ -30,6 +35,10 @@
   "bin": {
     "haibu": "./bin/haibu"
   },
-  "scripts": { "test": "sudo vows test/**/*-test.js --isolate --spec" },
-  "engines": { "node": "0.4.x || 0.6.x" }
+  "scripts": {
+    "test": "sudo vows test/**/*-test.js --isolate --spec"
+  },
+  "engines": {
+    "node": "0.4.x || 0.6.x"
+  }
 }
