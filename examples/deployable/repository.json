@@ -1,0 +1,11 @@
+{
+   "repository": {
+      "type": "stream"
+   },
+   "scripts": {
+      "start": "server.js"
+   },
+   "env": {
+      "msg": "yo!"
+   }
+}

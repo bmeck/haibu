@@ -1,0 +1,10 @@
+{
+   "name": "hellonode",
+   "version": "0.0.0",
+   "env": {
+      "msg": "Hello, Haibu!"
+   },
+   "scripts": {
+      "start": "server.js"
+   }
+}
