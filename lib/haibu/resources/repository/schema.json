@@ -54,6 +54,12 @@
                     "required": true
                 }
             }
+        },
+        "engines": {
+            "type": "object",
+            "additionalProperties": {
+                "type": "string"
+            }
         }
     }
 }

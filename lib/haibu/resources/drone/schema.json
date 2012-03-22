@@ -5,15 +5,7 @@
             "type": "object"
         },
         "environment": {
-            "type": "object",
-            "additionalProperties": {
-                "type": "string",
-                "required": true
-            }
-        },
-        "config": {
-            "type": "object",
-            "required": true
+            "type": "string"
         },
         "repository": {
             "type": "object",
