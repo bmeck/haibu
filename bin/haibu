@@ -22,25 +22,23 @@ var help = [
     '  -h, --help          You\'re staring at it',
 ].join('\n');
 
-haibu.config.file({ file: path.join(__dirname, '..', 'config', 'config.json') });
+haibu.config.argv().env().file({ file: path.join(__dirname, '..', 'config', 'config.json') });
 
 if (argv.h || argv.help) {
   util.puts(help);
 }
 else {
-  var env  = argv.env || 'development',
-      port = argv.p   || 9002;
-  
-  if (argv.chroot) {
-    haibu.use(haibu.plugins.chroot, {});
-  }
-  
-  if (argv.coffee) {
-    haibu.use(haibu.plugins.coffee, {});
-  }
-  
-  if (argv['advanced-replies']) {
-    haibu.use(haibu.plugins['advanced-replies'], {});
+  var env  = haibu.config.get('env') || haibu.config.get('NODE_ENV') || 'development',
+      port = haibu.config.get('p') || haibu.config.get('port') || 9002;
+
+  var plugins = haibu.config.get('plugins');
+  if (plugins) {
+    console.error(plugins)
+    Object.keys(plugins).forEach(function usePlugin(plugin) {
+      var options = haibu.config.get('plugins:' + plugin);
+      if (!options || typeof options !== 'object') options = {};
+      haibu.use(haibu.plugins[plugin], options);
+    });
   }
   
   haibu.use(flatiron.plugins.http);
@@ -57,7 +55,9 @@ else {
       host: address
     };
     
-    haibu.start(options.port, options.host, function () {
+    console.error('starting')
+    haibu.start(options.port, function () {
+      console.error(arguments)
       haibu.common.showWelcome('api-server', address, port);
     });
   });

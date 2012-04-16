@@ -5,7 +5,8 @@
             "type": "object"
         },
         "environment": {
-            "type": "string"
+            "type": "object",
+            "required": true
         },
         "repository": {
             "type": "object",

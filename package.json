@@ -28,7 +28,10 @@
     "semver": "1.0.x",
     "union": "0.x.x",
     "utile": "0.0.10",
-    "tar": "~0.1.12"
+    "tar": "~0.1.12",
+    "resourceful": "~0.1.10",
+    "eventemitter2": "~0.4.9",
+    "async": "~0.1.18"
   },
   "devDependencies": {
     "vows": "0.6.x"
